@@ -1,14 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
-class LoginUi extends StatefulWidget {
-  const LoginUi({super.key});
+class LoginNewUi extends StatefulWidget {
+  const LoginNewUi({super.key});
 
   @override
-  State<LoginUi> createState() => _LoginUiState();
+  State<LoginNewUi> createState() => _LoginNewUiState();
 }
 
-class _LoginUiState extends State<LoginUi> {
+class _LoginNewUiState extends State<LoginNewUi> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,20 +32,41 @@ class _LoginUiState extends State<LoginUi> {
           backgroundColor: Colors.transparent,
           body: Stack(
             children: <Widget>[
-              Positioned(
-                child: ClipPath(
-                  clipper: Backgroundclipper(),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.9,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      // borderRadius: BorderRadius.only(
-                      //   bottomRight: Radius.circular(150),
-                      // ),
-                    ),
-                  ),
-                ),
+              whitebox(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class whitebox extends StatelessWidget {
+  const whitebox({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: -30,
+      left: -305,
+      child: Transform.rotate(
+        angle: -pi / 4,
+        child: Container(
+          height: 600,
+          width: 600,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              bottomRight: Radius.circular(100),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 3,
+                blurRadius: 6,
+                offset: Offset(0, 3), // changes position of shadow
               ),
             ],
           ),

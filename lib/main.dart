@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screen/login_screen.dart';
+import 'screen/login_with_transform.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const LoginUi(),
+      home: const LoginNewUi(),
     );
   }
 }

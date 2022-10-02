@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class LoginNewUi extends StatefulWidget {
   const LoginNewUi({super.key});
@@ -21,7 +20,7 @@ class _LoginNewUiState extends State<LoginNewUi> {
           gradient: LinearGradient(
               colors: [
                 Color(0xFF0f3557),
-                Color(0xFF07c78b8),
+                Color(0xFF7c78b8),
               ],
               begin: FractionalOffset(0.0, 0.0),
               end: FractionalOffset(1.0, 0.0),
@@ -31,7 +30,10 @@ class _LoginNewUiState extends State<LoginNewUi> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(
-            children: <Widget>[
+            children: const <Widget>[
+              secondBackground(),
+              thirdBackground(),
+              firstbackground(),
               whitebox(),
             ],
           ),
@@ -41,6 +43,106 @@ class _LoginNewUiState extends State<LoginNewUi> {
   }
 }
 
+class thirdBackground extends StatelessWidget {
+  const thirdBackground({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: -300,
+      right: -130,
+      child: Transform.rotate(
+        angle: -pi / 4,
+        child: Container(
+          height: 500,
+          width: 400,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: const Color(0xff0f3557),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 16,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class secondBackground extends StatelessWidget {
+  const secondBackground({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 230,
+      right: -200,
+      child: Transform.rotate(
+        angle: -pi / 4,
+        child: Container(
+          height: 200,
+          width: MediaQuery.of(context).size.width * 1.5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: const Color(0xff0f3557),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 16,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class firstbackground extends StatelessWidget {
+  const firstbackground({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: -120,
+      right: 80,
+      child: Transform.rotate(
+        angle: -pi / 4,
+        child: Container(
+          width: 200,
+          height: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: const Color(0xff0f3557),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 16,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ignore: camel_case_types
 class whitebox extends StatelessWidget {
   const whitebox({
     Key? key,
@@ -66,7 +168,7 @@ class whitebox extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 3,
                 blurRadius: 6,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),

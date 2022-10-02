@@ -61,8 +61,8 @@ class Backgroundclipper extends CustomClipper<Path> {
     path.lineTo(0, size.height);
     // path.quadraticBezierTo(
     //     size.width-50, size.height, size.width , size.height - 150);
-    var controlpoint = new Offset(size.width, 0);
     path.lineTo(size.width - 20, size.height - 250);
+    var controlpoint = new Offset(size.width, 0);
     var endpoint = new Offset(size.width - 20, size.height - 250);
     path.quadraticBezierTo(
         controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);

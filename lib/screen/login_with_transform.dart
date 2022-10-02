@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginNewUi extends StatefulWidget {
   const LoginNewUi({super.key});
@@ -10,6 +11,8 @@ class LoginNewUi extends StatefulWidget {
 }
 
 class _LoginNewUiState extends State<LoginNewUi> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,13 +33,165 @@ class _LoginNewUiState extends State<LoginNewUi> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(
-            children: const <Widget>[
-              secondBackground(),
-              thirdBackground(),
-              firstbackground(),
-              whitebox(),
+            children: <Widget>[
+              const secondBackground(),
+              const thirdBackground(),
+              const firstbackground(),
+              const whitebox(),
+              emailPassword(),
+              loginButton(),
+              Positioned(
+                bottom: 80,
+                right: 100,
+                child: Column(
+                  children: const <Widget>[
+                    Text(
+                      'Conitinue With',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FaIcon(FontAwesomeIcons.facebook),
+                  ],
+                ),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget loginButton() {
+    return Positioned(
+      top: 400,
+      left: 20,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 60,
+            width: 350,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 3,
+                  blurRadius: 6,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const <Widget>[
+                  Text(
+                    'LOG IN NOW',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios)
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text('OR'),
+          const SizedBox(height: 10),
+          Container(
+            height: 60,
+            width: 350,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 1), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const <Widget>[
+                  Text(
+                    'CREATE A ACCOUNT',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black),
+                  ),
+                  Icon(Icons.arrow_forward_ios)
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget emailPassword() {
+    return Positioned(
+      top: 200,
+      left: 20,
+      child: SizedBox(
+        height: 150,
+        width: 300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextField(
+              controller: _email,
+              decoration: InputDecoration(
+                  prefixIcon: Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      border: Border(right: BorderSide(color: Colors.grey)),
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  labelText: "Email",
+                  border: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black))),
+            ),
+            TextField(
+              controller: _password,
+              decoration: InputDecoration(
+                  prefixIcon: Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      border: Border(right: BorderSide(color: Colors.grey)),
+                    ),
+                    child: const Icon(
+                      Icons.lock,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  labelText: "Password",
+                  border: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black))),
+            ),
+          ],
         ),
       ),
     );
